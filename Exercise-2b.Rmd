@@ -23,5 +23,90 @@ x <- 5
 y <- 6
 (z <- x+y)
 ```
+## Highlighting Module 7 + 8 
 
+Module 7: matrices, lists, and data frames 
+Matrices are two dimensional data structures 
+```{r matrices}
+(m <- matrix(1:30, nrow=5, ncol=7))
+(n <-(matrix(1:100, nrow=5, ncol=6, byrow = TRUE)))
+```
+Notice that R recycles the numbers 
 
+Arrays are n-dimensional data structures 
+```{r}
+a <- array(dim=c(5, 6, 3), data=1:90)
+dim(a)
+class(a)
+attributes(a)
+str(a)
+```
+You can reference or extract select elements from vectors, matrices, and arrays by subsetting them using their index positions in what is known as brack notation *[]*
+
+## Pulling out items within the matrices based on index position
+
+```{r}
+v <- 1:100
+v[33:35]
+v[(c(1, 4, 50))]
+cheers <- c("c","h","e","e","r","s")
+cheers[c(2,5)]
+```
+
+## Lists and dataframes
+```{r}
+s <- c("this", "is", "a", "vectors", "of", "strings")
+m <- matrix(data=1:40, nrow=5, ncol=8)
+b <- FALSE
+l <- list(s, m, b)
+l <-list(string = s, matrix = m, bool = b)
+attributes(l)
+length(l)
+```
+
+## Subsetting Lists
+Now we are using double brackets! 
+You can reference or extract elements from a list similarly to how you would from other data strucutre, except that you would use double brackets[[]] to reference a single element in the list
+```{r}
+l[[2]]
+l[[2]][2,6]
+```
+Note the difference between l[] and l[[]]
+```{r}
+l[2]
+l[[2]]
+```
+Single brackets will have $matrix. So if you are wanting to actually interact with the data within the matrix, you will have to use [[]]
+
+```{r}
+df <- data.frame(
+  firstName = c("Rick", "Negan", "Dwight", "Maggie", "Michonne"), 
+  community = c("Aleandria", "Saviors", "Saviors", "Hilltop","Saviors"),
+  sex = c("M", "M", "M", "F", "F"),
+  age = c(27, 28, 40, 23, 21)
+)
+```
+
+Data from Excel
+```{r}
+## Not really sure what happened here in class. Whoops. Go back and rewatch video. 
+# library(readxl)
+# f <- file.choose()
+# df <- read_excel(
+#  path = f, sheet = 1, 
+#  col_names = TRUE
+# )
+# head(df)
+# class(df)
+# str(df)
+```
+
+## Getting Started with Module 8
+```{r}
+f <- "/Users/Kiersten/Downloads/CPDS-1960-2014-reduced.csv"
+d <- read.table(f, header= TRUE, sep = ",", stringsAsFactors = FALSE)
+head(d)
+
+## if running later on, these will be helpful: tidyverse, data.table
+# work through module 7 + 8
+```
